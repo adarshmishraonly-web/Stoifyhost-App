@@ -1,0 +1,1 @@
+ALTER TABLE public.guests ALTER COLUMN email DROP NOT NULL;

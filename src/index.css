@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 100% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 100% 59%;
+    --radius: 0.75rem;
+
+    --glow-red: 0 100% 59%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .text-glow-red {
+    text-shadow: 0 0 20px hsl(var(--glow-red) / 0.6), 0 0 40px hsl(var(--glow-red) / 0.4);
+  }
+  .text-glow-soft {
+    text-shadow: 0 0 30px hsl(0 0% 100% / 0.25);
+  }
+  .bg-radial-glow {
+    background: radial-gradient(ellipse at center, hsl(var(--glow-red) / 0.18) 0%, transparent 60%);
+  }
+  .logo-glow {
+    filter: drop-shadow(0 0 40px hsl(var(--glow-red) / 0.55)) drop-shadow(0 0 80px hsl(var(--glow-red) / 0.35));
+  }
+  .cursor-hidden { cursor: none; }
+
+  @keyframes name-in {
+    0% { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  @keyframes name-out {
+    0% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    100% { opacity: 0; transform: translateY(-20px); filter: blur(8px); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .animate-name-in { animation: name-in 0.9s ease-out both; }
+  .animate-name-out { animation: name-out 0.7s ease-in both; }
+  .animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+}
